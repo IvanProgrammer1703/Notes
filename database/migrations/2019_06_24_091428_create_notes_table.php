@@ -18,7 +18,7 @@ class CreateNotesTable extends Migration
             $table->string('name');
             $table->text('note');
             $table->integer('type_id');
-            $table->date('deadline');
+            $table->string('deadline')->default('not marked');
             $table->timestamps();
         });
     }

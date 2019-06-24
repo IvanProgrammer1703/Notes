@@ -7,4 +7,9 @@ type_number.onclick = function(){
     } else {
     document.getElementById("noteDate_block").style.display='none';
     }
+    if(type == "type-1"){
+    document.getElementById("categories_block").style.display='';
+    } else {
+    document.getElementById("categories_block").style.display='none';
+    }
 }
