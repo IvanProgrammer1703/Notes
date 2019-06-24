@@ -1,57 +1,23 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/notebook.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Laravel</title>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Notes</h1>
+        <p class="lead">Зачетная работа по практике 01.06.2019-29.06.2019 приложение для заметок.</p>
+        <hr class="my-4">
+        <p><span style="color:red;">ВНИМАНИЕ:</span> этот сайт адаптивен, так что он отлично подходит для испольования на мобильных устрйоствах. И в связи с этим рекомендуем использовать его на мобильном устрйостве, так как это удобно и облегчает использование приложением</p>
+        <hr class="my-4">
+        <p><span style="color:yellow;">ВАЖНО:</span> Перед началом работы необходимо зарегистрироваться, если у Вас уже есть аккаунт, то пожалуйста авторизуйтесь</p>
+        <p class="lead">
+            <a class="btn btn-dark btn-lg" href="https://vk.com/programmerivan" role="button">Все вопросы принимаються здесь</a>
+        </p>
+    </div>
+    <div class="jumbotron">
+        <h1 class="display-4">Новинки</h1>
+            <p class="lead">Тут собраны новинки которые в ближайшее время будут доавблены в приложение</p>
+            <hr class="my-4">
+            <p>Двойная верификация - для обеспечения безопасности наших пользователей в скором времени мы добавим двойную верификация. Это поможет сохранить данные в более целостном состояни.<span style="color:red;">При первой же возможности рекомендуем использовать двойную верификацию, <b>это безопасно</b></span></p>
+    </div>
+</div>
+@endsection
