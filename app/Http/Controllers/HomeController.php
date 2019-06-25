@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Type;
 use App\Note;
+use App\Category;
+
 class HomeController extends Controller
 {
     /**
@@ -24,10 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $notes = Type::find(1)->type_name;
+        $categories = Category::orderBy('id','desc')->get();
         $types = Type::orderBy('id', 'desc')->get();
-        //$notes = Note::orderBy('id','desc')->get();
-        return view('home',compact('types','notes'));
+        $notes = Note::orderBy('id','desc')->get();
+
+        return view('home',compact('types','notes','categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -43,6 +46,18 @@ class HomeController extends Controller
          $note->type_id = $request->input('type');
          if($request->input('deadline')){
              $note->deadline = $request->input('deadline');
+         }
+         if($request->input('category')){
+
+            $note->category_id = $request->input('category');
+         } else {
+            $note->category_id = '0';
+         }
+         if($request->input('label')){
+
+            $note->label = $request->input('label');
+         } else {
+            $note->label = 'no labels';
          }
          $note->save();
 

@@ -33,6 +33,17 @@
                   <label for="noteDate">Deadline</label>
                   <input type="date" class="form-control" id="noteDate" name="deadline" placeholder="Enter name note">
               </div>
+              <div class="form-group" id="categories_block" style="display: none;">
+                  <label>categories</label>
+                  <select class="form-control" name="category">
+                    <option></option>
+                        @foreach ($categories as $category)
+                            <option id="category-{{$category->id}}" value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                    <label for="exampleFormControlLabel">Labels</label>
+                    <textarea class="form-control" id="exampleFormControlLabel" name="label" rows="3" placeholder="Enter labels"></textarea>
+              </div>
               <button type="submit" class="btn btn-dark">Добавить</button>
           </form>
       </div>
@@ -42,15 +53,15 @@
         @foreach ($notes as $note)
     <div class="card">
         <div class="card-header">
-            {{__('welcome.notes')}}
+           {{__('welcome.notes')}}
         </div>
         <div class="card-body">
             <h5 class="card-title">{{$note->name}}</h5>
             <p class="card-text">{{$note->note}}</p>
-            <p class="card-text" style="color:gray;">type : {{$note->id}}</p>
-            @if ($note->deadline)
-              <p class="card-text" style="color:gray;">deadline : {{$note->deadline}}</p>
-            @endif
+            <p class="card-text" style="color:gray;">type : {{$note->type->name}}</p>
+            <p class="card-text" style="color:gray;">deadline : {{$note->deadline}}</p>
+            <p class="card-text" style="color:gray;">category : {{$note->category->name}}</p>
+            <p class="card-text" style="color:gray;">labels : {{$note->label}}</p>
         </div>
     </div>
     <br />
