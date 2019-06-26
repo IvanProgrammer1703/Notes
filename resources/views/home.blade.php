@@ -37,9 +37,11 @@
                   <label>categories</label>
                   <select class="form-control" name="category">
                     <option></option>
+                    @if($categories)
                         @foreach ($categories as $category)
                             <option id="category-{{$category->id}}" value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
+                    @endif
                     </select>
                     <label for="exampleFormControlLabel">Labels</label>
                     <textarea class="form-control" id="exampleFormControlLabel" name="label" rows="3" placeholder="Enter labels"></textarea>
@@ -60,8 +62,17 @@
             <p class="card-text">{{$note->note}}</p>
             <p class="card-text" style="color:gray;">type : {{$note->type->name}}</p>
             <p class="card-text" style="color:gray;">deadline : {{$note->deadline}}</p>
-            <p class="card-text" style="color:gray;">category : {{$note->category->name}}</p>
+            <p class="card-text" style="color:gray;">category :
+                @if($note->category)
+                {{$note->category->name}}
+                @endif
+            </p>
             <p class="card-text" style="color:gray;">labels : {{$note->label}}</p>
+            <form action="{{route('home.destroy',$note->id)}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-dark")>Delete</button>
+            </form>
         </div>
     </div>
     <br />

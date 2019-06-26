@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Middleware\RootTest;
+use App\Category;
 class RootController extends Controller
 {
     /**
@@ -18,8 +19,9 @@ class RootController extends Controller
     }
     public function index()
     {
+        $categories = Category::orderBy('id','desc')->get();
 
-        return view('roots');
+        return view('roots',compact('categories'));
     }
 
     /**
@@ -40,7 +42,12 @@ class RootController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->input('category_name');
+
+        $category->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -85,6 +92,9 @@ class RootController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = new Category();
+        $categories->where('id','=',$id)->delete();
+
+        return redirect()->back();
     }
 }
