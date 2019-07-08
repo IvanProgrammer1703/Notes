@@ -4,20 +4,29 @@
 <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">Notes</h1>
-        <p class="lead">Зачетная работа по практике 01.06.2019-29.06.2019 приложение для заметок.</p>
+        <p class="lead">{{__('welcome.credit_work')}}</p>
         <hr class="my-4">
-        <p><span style="color:red;">ВНИМАНИЕ:</span> этот сайт адаптивен, так что он отлично подходит для испольования на мобильных устрйоствах. И в связи с этим рекомендуем использовать его на мобильном устрйостве, так как это удобно и облегчает использование приложением</p>
+        <p><span style="color:red;">{{__('welcome.warning')}}:</span>{{__('welcome.disclaimer')}}</p>
         <hr class="my-4">
-        <p><span style="color:yellow;">ВАЖНО:</span> Перед началом работы необходимо зарегистрироваться, если у Вас уже есть аккаунт, то пожалуйста авторизуйтесь</p>
+        <p><span style="color:yellow;">{{__('welcome.importantly')}}:</span>{{__('welcome.authorize')}}</p>
         <p class="lead">
-            <a class="btn btn-dark btn-lg" href="https://vk.com/programmerivan" role="button">Все вопросы принимаються здесь</a>
+            <a class="btn btn-dark btn-lg" href="https://vk.com/programmerivan" role="button">{{__('welcome.featback')}}</a>
         </p>
     </div>
     <div class="jumbotron">
-        <h1 class="display-4">Новинки</h1>
-            <p class="lead">Тут собраны новинки которые в ближайшее время будут доавблены в приложение</p>
+        <h1 class="display-4">{{__('welcome.new')}}</h1>
+            <p class="lead">{{__('welcome.new_description')}}</p>
             <hr class="my-4">
-            <p>Двойная верификация - для обеспечения безопасности наших пользователей в скором времени мы добавим двойную верификация. Это поможет сохранить данные в более целостном состояни.<span style="color:red;">При первой же возможности рекомендуем использовать двойную верификацию, <b>это безопасно</b></span></p>
+            <ul>
+
+            <li>
+                <p>
+                    {{__('welcome.new_one')}}
+                </p></li>
+            <li>
+                <p>{{__('welcome.new_two')}}<b style="color:blue;">{{__('welcome.for_admin')}}</b></p>
+            </li>
+            </ul>
     </div>
 </div>
 @endsection

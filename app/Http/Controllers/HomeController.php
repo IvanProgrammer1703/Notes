@@ -24,13 +24,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('id','desc')->get();
-        $types = Type::orderBy('id', 'desc')->get();
-        $notes = Note::orderBy('id','desc')->get();
+        if(!empty($request->input('search'))){
 
-        return view('home',compact('types','notes','categories'));
+            $question = '%'.$request->input('search').'%'; // добавляем % что бы искать не только по всей строке но и по фрагменту.
+            $categories = Category::orderBy('id','desc')->get();
+            $types = Type::orderBy('id', 'desc')->get();
+            $notes = Note::where('note','LIKE',$question)
+                -> orWhere('label','LIKE',$question)
+                ->get();
+
+            return view('home',compact('types','notes','categories'));
+        } else {
+
+            $categories = Category::orderBy('id','desc')->get();
+            $types = Type::orderBy('id', 'desc')->get();
+            $notes = Note::orderBy('id','desc')->get();
+
+            return view('home',compact('types','notes','categories'));
+        }
     }
     /**
      * Store a newly created resource in storage.
@@ -77,5 +90,17 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+
+    }
+
 
 }

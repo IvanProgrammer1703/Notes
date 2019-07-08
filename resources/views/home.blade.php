@@ -2,6 +2,28 @@
 
 @section('content')
 <div class="container">
+    <form class="form-inline" action="{{route('home.index')}}" method="GET">
+        @csrf
+        <div class="form-group mx-sm-2 mb-2">
+            <label for="searchinput" class="sr-only">Search</label>
+            <input type="text" class="form-control" id="searchinput" placeholder="enter query" name="search" required>
+        </div>
+        <!-- <div class="form-group mx-sm-2 mb-2">
+        <select class="form-control" name="category">
+            <option></option>
+            @if($categories)
+                @foreach ($categories as $category)
+                    <option id="category-{{$category->id}}" value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            @endif
+        </select>
+        </div> -->
+        <button type="submit" class="btn btn-dark mb-2">search</button>
+    </form>
+    <form class="form-inline" action="{{route('home.index')}}" method="GET">
+      @csrf
+        <button type="submit" class="btn btn-dark mb-2">all view</button>
+    </form>
     <p>
       <a class="btn btn-light btn-lg" style="width:100%;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           <b>+</b>
@@ -9,7 +31,7 @@
     </p>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
-          <form action={{url('home')}} method="POST">
+          <form action={{route('home.store')}} method="POST">
             @csrf
               <div class="form-group">
                   <label for="noteName">Name</label>
@@ -61,13 +83,17 @@
             <h5 class="card-title">{{$note->name}}</h5>
             <p class="card-text">{{$note->note}}</p>
             <p class="card-text" style="color:gray;">type : {{$note->type->name}}</p>
+            @if($note->deadline != 'not marked')
             <p class="card-text" style="color:gray;">deadline : {{$note->deadline}}</p>
+            @endif
+            @if($note->category)
             <p class="card-text" style="color:gray;">category :
-                @if($note->category)
                 {{$note->category->name}}
-                @endif
             </p>
+            @endif
+            @if ($note->label != 'no labels')
             <p class="card-text" style="color:gray;">labels : {{$note->label}}</p>
+            @endif
             <form action="{{route('home.destroy',$note->id)}}" method="POST">
                     @method('DELETE')
                     @csrf

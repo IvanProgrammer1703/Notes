@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('/home','HomeController');
+Route::resource('home','HomeController');
 
 Route::resource('root','RootController');
+
+Route::resource('search','SearchController');

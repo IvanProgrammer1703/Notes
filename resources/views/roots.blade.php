@@ -36,7 +36,7 @@
                     @method('DELETE')
                     @csrf
                     @if($category->id != '0')
-                    <button type="submit" class="btn btn-dark")>Delete Category</button>
+                        <button type="submit" class="btn btn-dark")>Delete Category</button>
                     @endif
                 </form>
             </div>
