@@ -8,7 +8,7 @@
             <label for="searchinput" class="sr-only">Search</label>
             <input type="text" class="form-control" id="searchinput" placeholder="enter query" name="search" required>
         </div>
-        <!-- <div class="form-group mx-sm-2 mb-2">
+        <div class="form-group mx-sm-2 mb-2">
         <select class="form-control" name="category">
             <option></option>
             @if($categories)
@@ -17,7 +17,7 @@
                 @endforeach
             @endif
         </select>
-        </div> -->
+        </div>
         <button type="submit" class="btn btn-dark mb-2">search</button>
     </form>
     <form class="form-inline" action="{{route('home.index')}}" method="GET">
@@ -73,7 +73,6 @@
       </div>
     </div>
     <br />
-
         @foreach ($notes as $note)
     <div class="card">
         <div class="card-header">

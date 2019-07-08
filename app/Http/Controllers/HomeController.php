@@ -30,10 +30,17 @@ class HomeController extends Controller
 
             $question = '%'.$request->input('search').'%'; // добавляем % что бы искать не только по всей строке но и по фрагменту.
             $categories = Category::orderBy('id','desc')->get();
-            $types = Type::orderBy('id', 'desc')->get();
             $notes = Note::where('note','LIKE',$question)
-                -> orWhere('label','LIKE',$question)
-                ->get();
+            -> orWhere('label','LIKE',$question)
+            ->get();
+
+            if(!empty($request->input('category'))){
+                $notes = $notes->where('category_id','=',$request->input('category'));
+            }
+
+
+
+            $types = Type::orderBy('id', 'desc')->get();
 
             return view('home',compact('types','notes','categories'));
         } else {
